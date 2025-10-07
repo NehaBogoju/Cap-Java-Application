@@ -1,6 +1,7 @@
-FROM maven:3.8.7-eclipse-temurin-8
+FROM maven:3.9.4-eclipse-temurin-17
 WORKDIR /app
-COPY . .
+COPY pom.xml ./
 RUN mvn clean package
+COPY src/ ./src/
 EXPOSE 8080
-CMD ["java", "-jar", "target/maven-web-application.war"]
+CMD ["java", "-jar", "target/java-docker-tutorial-1.0-SNAPSHOT.jar"]
